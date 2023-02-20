@@ -1,19 +1,33 @@
 import numpy as np
-class snake(stringa) -> int:
-  def __init__(mossedagioco, snake  scia):
-      
-      
-      n=len(mossedagioco);
-      
-      while i<n:
-          if snake ha più di un valore allora seguo
-              "ha più "
-              "alleora fai colors" 
-              "altrimenti nul"
-          end
-          
-      trova le differenze tra un numpy e il corrispondente vettore   Uù 
-  
+import pandas as pd
+from matplotlib import pyplot as plt
+
+
+def play(game_file: str) -> int:
     
-  
-pass
+    n=1; #lunghezza iniziale del serpente
+    
+    def ostacoli(self,blocks):
+        self.blocks
+        b.np=[0 2,
+              1 1,
+              3 1];
+        #se il serpente non incontra un ostacolo allora il gioco prosegue
+        while
+    
+    class mossedagioco(moves,start):
+        
+    
+    class scia(mossedagioco, snake, scia)
+    
+    if #mossa è buona 
+        #testa serpente va avanti
+        if #incontra cibo
+            "n=n+1;"
+    else:
+        return n
+        
+  pass
+
+
+#come collego il file json al codice?
