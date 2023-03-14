@@ -3,6 +3,12 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 
+#convertire un file png in PYTHON
+from data import Field
+
+fi= Field.open('field01.png')
+na=np.array(fi)
+
 """decido di creare la funzione che accetta una stringa in cui contiene
 il file json con il campo da gioco"""
 
