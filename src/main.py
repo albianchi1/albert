@@ -3,11 +3,17 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 
-#convertire un file png in PYTHON
-from data import Field
+#converto un file PNG in un matrice di tuple RGB
+import numpy as np
+from PIL import Image
 
-fi= Field.open('field01.png')
-na=np.array(fi)
+def my_load_image(filename: str) -> np.ndarray:
+    img = Image.open(filename)
+    return np.array(img)
+
+img=Image.open("data/field_01.png")
+print(np.array(img))
+
 
 """decido di creare la funzione che accetta una stringa in cui contiene
 il file json con il campo da gioco"""
