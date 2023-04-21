@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 
-#converto un file PNG in un matrice di tuple RGB
+'''converto un file PNG in un matrice di tuple RGB'''
 import numpy as np
 from PIL import Image
 
@@ -14,6 +14,16 @@ def my_load_image(filename: str) -> np.ndarray:
 img=Image.open("data/field_01.png")
 print(np.array(img))
 
+
+"""converto un file JSON in una lista di liste"""
+
+import json
+from pprint import pprint
+
+with open('field_02.json') as initial_field:
+    d = json.loads(initial_field)
+    initial_field.close()
+    pprint(d)
 
 """decido di creare la funzione che accetta una stringa in cui contiene
 il file json con il campo da gioco"""
