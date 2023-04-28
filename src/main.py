@@ -25,17 +25,22 @@ import json
 
 def my_load_json(filename: str) -> np.ndarray:
   
-  with open("field_02.json") as initial_field:
+  with open("filename") as initial_field:
       json_data = json.load(initial_field)
       print(json_data)
       
-      rows = d['rows']
-      cols = d['cols']
-      
+      rows = json_data['rows']
+      cols = json_data['cols']
+      food = json_data['food']
+      blocks = json_data['blocks']
       
       field = np.zeros((rows, cols, 3), dtype=np.uint8)
       
-      print(field)
+      
+      def stampa_stringa(s: str):
+          print(s)
+
+    
   pass
 
 
