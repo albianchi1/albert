@@ -39,6 +39,8 @@ def my_load_json(filename: str) -> np.ndarray:
       
       def stampa_stringa(s: str):
           print(s)
+          
+      stampa_stringa("field")
 
     
   pass
