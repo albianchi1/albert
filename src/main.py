@@ -25,7 +25,7 @@ import json
 
 def my_load_json(filename: str) -> np.ndarray:
   
-  with open("filename") as initial_field:
+  with open(filename) as initial_field:
       json_data = json.load(initial_field)
       print(json_data)
       
@@ -34,7 +34,7 @@ def my_load_json(filename: str) -> np.ndarray:
       food = json_data['food']
       blocks = json_data['blocks']
       
-      field = np.zeros((rows, cols, 3), dtype=np.uint8)
+      field = np.zeros((rows, cols, food, blocks, 3), dtype=np.uint8)
       
       
       def stampa_stringa(s: str):
