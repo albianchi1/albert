@@ -34,13 +34,15 @@ def my_load_json(filename: str) -> np.ndarray:
       food = json_data['food']
       blocks = json_data['blocks']
       
-      field = np.zeros((rows, cols, food, blocks, 3), dtype=np.uint8)
+      field = np.zeros((rows, cols, 3), dtype=np.uint8)
       
-      
-      def stampa_stringa(s: str):
-          print(s)
-          
-      stampa_stringa("field")
+     def completed_initial_field(self,field,food,blocks) :
+         self.food=food
+         self.blocks=blocks
+         
+         field=np.matrix(food,blocks)
+         
+         
 
     
   pass
