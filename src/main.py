@@ -36,14 +36,10 @@ def my_load_json(filename: str) -> np.ndarray:
       
       field = np.zeros((rows, cols, 3), dtype=np.uint8)
       
-     def completed_initial_field(self,field,food,blocks) :
-         self.food=food
-         self.blocks=blocks
+      for [x,y] in food:
+          for food in field:
+              field[x,y]=
          
-         field=np.matrix(food,blocks)
-         
-         
-
     
   pass
 
