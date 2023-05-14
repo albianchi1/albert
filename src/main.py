@@ -38,7 +38,7 @@ def my_load_json(filename: str) -> np.ndarray:
       
       for [x,y] in food:
           for food in field:
-              field[x,y]=
+              field[x,y]=(255,128,0)
          
     
   pass
