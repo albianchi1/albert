@@ -37,8 +37,10 @@ def my_load_json(filename: str) -> np.ndarray:
       field = np.zeros((rows, cols, 3), dtype=np.uint8)
       
       for [x,y] in food:
-          for food in field:
-              field[x,y]=(255,128,0)
+          field[x][y]=(255,128,0)
+          
+      for [x,y] in blocks:
+          field[x][y]=(255,0,0)
          
     
   pass
