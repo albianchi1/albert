@@ -42,9 +42,9 @@ def my_load_json(filename: str) -> np.ndarray:
       for [x,y] in blocks:
           field[x][y]=(255,0,0)
          
-    
   pass
 
+my_load_json(data/field_02.json)
 
 
 
