@@ -35,19 +35,48 @@ def my_load_json(filename: str) -> np.ndarray:
       
       field = np.zeros((rows, cols, 3), dtype=np.uint8)
       
+      
       for [x,y] in food:
           field[x][y]=(255,128,0)
           
       for [x,y] in blocks:
           field[x][y]=(255,0,0)
+          
+  return(field)
          
-  pass
-
-return(field)
+    
 
 """fine conversione di un file JSON in una lista di liste"""
 
 
 def play(game_file: str) -> int:
-
+    
+    with open(game_file) as gamefile:
+        jsondata = json.load(gamefile)
+        print(jsondata)
+        
+        field_in = jsondata["field_in"]
+        start = jsondata["start"]
+        moves = jsondata["moves"]
+        field_out = jsondata["field_out"]
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
