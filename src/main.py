@@ -42,7 +42,7 @@ def my_load_json(filename: str) -> np.ndarray:
       for [x,y] in blocks:
           field[x][y]=(255,0,0)
           
-  return(field)
+  return field
          
     
 
@@ -59,6 +59,9 @@ def play(game_file: str) -> int:
         start = jsondata["start"]
         moves = jsondata["moves"]
         field_out = jsondata["field_out"]
+        
+        
+        my_load_image(field_in)
         
         
         
