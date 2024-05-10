@@ -1,9 +1,9 @@
 #importo numpy pandas e matplotlib
-import numpy as np
+"""import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 
-"""converto un file PNG in un matrice di tuple RGB"""
+#converto un file PNG in un matrice di tuple RGB
 from PIL import Image
 
 def my_load_image(filename: str) -> np.ndarray:
@@ -13,12 +13,12 @@ def my_load_image(filename: str) -> np.ndarray:
 img=Image.open("data/field_01.png")
 print(np.array(img))
 
-"""fine conversione file PNG in una matrice PNG"""
+#fine conversione file PNG in una matrice PNG
 
 
 
 
-"""converto un file JSON in una lista di liste"""
+#converto un file JSON in una lista di liste
 
 import json
 
@@ -46,7 +46,7 @@ def my_load_json(filename: str) -> np.ndarray:
          
     
 
-"""fine conversione di un file JSON in una lista di liste"""
+#fine conversione di un file JSON in una lista di liste
 
 
 def play(game_file: str) -> int:
@@ -60,10 +60,25 @@ def play(game_file: str) -> int:
         moves = jsondata["moves"]
         field_out = jsondata["field_out"]
         
+        #vedo la natura del file field_in se PNG o JSON
         
-        my_load_image(field_in)
+        def check_PNG(field_in):"""
+            
         
         
+class ostacoli:
+"""qui inserirò le caselle contenti gli ostacoli"""
+    
+class cibo:
+"""qui inserirò le caselle contenenti il cibo"""
+    
+class vuoto:
+"""qui lascerò le caselle vuote"""
+
+class direzioni:
+"""qui inserirò il campo dove vengono effettuate tutte le mosse """
+    
+    
         
         
         
