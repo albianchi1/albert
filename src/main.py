@@ -63,20 +63,48 @@ def play(game_file: str) -> int:
         #vedo la natura del file field_in se PNG o JSON
         
         def check_PNG(field_in):"""
-            
-        
-        
-class ostacoli:
-"""qui inserirò le caselle contenti gli ostacoli"""
-    
-class cibo:
-"""qui inserirò le caselle contenenti il cibo"""
-    
-class vuoto:
-"""qui lascerò le caselle vuote"""
+   
 
-class direzioni:
-"""qui inserirò il campo dove vengono effettuate tutte le mosse """
+
+import numpy as np         
+ 
+class campo:
+    
+    campodigioco=np.array([0,0,0,0,0,0,0,0,0,0],
+                          [0,0,0,0,0,0,0,0,0,0]
+                          [0,0,0,0,0,0,0,0,0,0]
+                          [0,0,0,0,0,0,0,0,0,0]
+                          [0,0,0,0,0,0,0,0,0,0])
+    
+    class ostacoli:
+        """qui inserirò le caselle contenti gli ostacoli"""
+        
+    
+    class cibo:
+        """qui inserirò le caselle contenenti il cibo"""
+        
+        
+  
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+        
+
     
     
         
