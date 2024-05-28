@@ -1,5 +1,5 @@
 #importo numpy pandas e matplotlib
-"""import numpy as np
+import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 
@@ -44,9 +44,12 @@ def my_load_json(filename: str) -> np.ndarray:
           
   return field
          
-    
-
 #fine conversione di un file JSON in una lista di liste
+
+
+
+
+#inizio a scrivere la funzione play
 
 
 def play(game_file: str) -> int:
@@ -60,28 +63,17 @@ def play(game_file: str) -> int:
         moves = jsondata["moves"]
         field_out = jsondata["field_out"]
         
-        #vedo la natura del file field_in se PNG o JSON
-        
-        def check_PNG(field_in):"""
+        #vedo l'estensione del file field_in se PNG o JSON
+    
+        if field_in.endswith('.png'):
+            #scrivo codice
+        elif field_in.endswith('.json'):
+            #scrivo codice
    
 
 
-import numpy as np         
- 
-class campo:
-    
-    campodigioco=np.array([0,0,0,0,0,0,0,0,0,0],
-                          [0,0,0,0,0,0,0,0,0,0]
-                          [0,0,0,0,0,0,0,0,0,0]
-                          [0,0,0,0,0,0,0,0,0,0]
-                          [0,0,0,0,0,0,0,0,0,0])
-    
-    class ostacoli:
-        """qui inserirò le caselle contenti gli ostacoli"""
-        
-    
-    class cibo:
-        """qui inserirò le caselle contenenti il cibo"""
+
+
         
         
   
