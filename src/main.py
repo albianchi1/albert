@@ -66,12 +66,11 @@ def play(game_file: str) -> int:
         #vedo l'estensione del file field_in se PNG o JSON
     
         if field_in.endswith('.png'):
-            #scrivo codice
+            my_load_image(field_in)
+            
+            
         elif field_in.endswith('.json'):
-            #scrivo codice
-   
-
-
+            my_load_json(field_in)
 
 
         
