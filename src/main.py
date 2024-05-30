@@ -46,7 +46,16 @@ def my_load_json(filename: str) -> np.ndarray:
          
 #fine conversione di un file JSON in una lista di liste
 
+#creo la classe snake
 
+class snake:
+    def init(self, snake, start, moves):
+        self.snake=start
+        
+        for mossa in moves:
+            if snake
+        
+    
 
 
 #inizio a scrivere la funzione play
@@ -67,6 +76,7 @@ def play(game_file: str) -> int:
     
         if field_in.endswith('.png'):
             my_load_image(field_in)
+            
             
             
         elif field_in.endswith('.json'):
