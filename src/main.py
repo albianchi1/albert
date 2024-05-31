@@ -49,11 +49,18 @@ def my_load_json(filename: str) -> np.ndarray:
 #creo la classe snake
 
 class snake:
-    def init(self, snake, start, moves):
+    def init(self, snake, start):
         self.snake=start
         
-        for mossa in moves:
-            if snake
+    def go(moves):
+        while mossa in moves:
+            if casella is food :
+                lunghezza=+1
+            elif casella is blocks :
+                return field
+            elif casella is snake :
+                return field
+            
         
     
 
