@@ -54,6 +54,25 @@ class snake:
         
     def go(moves):
         while mossa in moves:
+            if mossa is "N" :
+                #aggiorno testa coda e scia del serpente
+            if mossa is "S" : 
+                #aggiorno testa coda e scia del serpente
+            if mossa is "E" :
+                #aggiorno testa coda e scia del serpente
+            if mossa is "W" :
+                #aggiorno testa coda e scia del serpente
+            if mossa is "NW" :
+                #aggiorno testa coda e scia del seprente
+            if mossa is "NE" :
+                #aggiorno testa coda e scia del seprente
+            if mossa is "SW" :
+                #aggiorno testa coda e scia del serpente
+            if mossa is "SE" :
+                #aggiorno testa coda e scia del serpente
+                     
+                
+                
             if casella is food :
                 lunghezza=+1
             elif casella is blocks :
