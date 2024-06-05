@@ -64,23 +64,36 @@ class snake:
         while mossa in moves:
             if mossa is "N" :
                 
-                testa=
+                testa=[-1][+0]
                 
                 
             if mossa is "S" : 
-                #aggiorno testa coda e scia del serpente
+                
+                testa=[+1][+0]
+                
             if mossa is "E" :
-                #aggiorno testa coda e scia del serpente
+                
+                testa=[+0][+1]
+                
             if mossa is "W" :
-                #aggiorno testa coda e scia del serpente
+                
+                testa=[+0][-1]
+                
             if mossa is "NW" :
-                #aggiorno testa coda e scia del seprente
+                
+                testa=[-1][-1]
+                
             if mossa is "NE" :
-                #aggiorno testa coda e scia del seprente
+                
+                testa=[-1][+1]
+                
             if mossa is "SW" :
-                #aggiorno testa coda e scia del serpente
+                
+                testa=[+1][-1]
+                
             if mossa is "SE" :
-                #aggiorno testa coda e scia del serpente
+                
+                testa=[+1][+1]
                      
                 
                 
