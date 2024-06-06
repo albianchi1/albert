@@ -66,6 +66,15 @@ class snake:
                 
                 testa=[-1][+0]
                 
+                if testa == blocks:
+                    
+                    return field
+                
+                elif testa == food:
+                    
+                    coda=coda
+                    
+                    lunsnake= testa + coda
                 
             if mossa is "S" : 
                 
