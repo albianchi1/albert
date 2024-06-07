@@ -66,6 +66,39 @@ class snake:
                 
                 testa=[-1][+0]
                 
+                
+                
+                if testa == blocks:
+                    
+                    return field
+                
+                elif testa == food:
+                    
+                    coda=coda
+                    
+                    lunsnake= testa + coda
+                    
+                    
+                
+            elif mossa is "S" : 
+                
+                testa=[+1][+0]
+                
+                if testa == blocks:
+                    
+                    return field
+                
+                elif testa == food :
+                    
+                    coda=coda
+                    
+                    lunsnake= testa + coda
+                    
+                
+            elif mossa is "E" :
+                
+                testa=[+0][+1]
+                
                 if testa == blocks:
                     
                     return field
@@ -76,42 +109,83 @@ class snake:
                     
                     lunsnake= testa + coda
                 
-            if mossa is "S" : 
-                
-                testa=[+1][+0]
-                
-            if mossa is "E" :
-                
-                testa=[+0][+1]
-                
-            if mossa is "W" :
+            elif mossa is "W" :
                 
                 testa=[+0][-1]
                 
-            if mossa is "NW" :
+                if testa == blocks:
+                    
+                    return field
+                
+                elif testa == food :
+                    
+                    coda=coda
+                    
+                    lunsnake= testa + coda
+                    
+            elif mossa is "NW" :
                 
                 testa=[-1][-1]
                 
-            if mossa is "NE" :
+                if testa == blocks:
+                    
+                    return field
+                
+                elif testa == food:
+                    
+                    coda=coda
+                    
+                    lunsnake= testa + coda
+                    
+            elif mossa is "NE" :
                 
                 testa=[-1][+1]
                 
-            if mossa is "SW" :
+                if testa = blocks:
+                    
+                    return field
+                
+                elif testa == food:
+                    
+                    coda=coda
+                    
+                    lunsake= testa + coda
+                    
+            elif mossa is "SW" :
                 
                 testa=[+1][-1]
                 
-            if mossa is "SE" :
+                if testa == blocks:
+                    
+                    return field
+                
+                elif testa == food:
+                    
+                    coda=coda
+                    
+                    lunsnake= testa + coda
+                    
+            elif mossa is "SE" :
                 
                 testa=[+1][+1]
-                     
                 
+                if testa == blocks:
+                    
+                    return field
                 
-            if casella is food :
-                lunghezza=+1
-            elif casella is blocks :
-                return field
-            elif casella is snake :
-                return field
+                elif testa == food:
+                    
+                    coda=coda
+                    
+                    lunsnake= testa + coda
+        
+             else:
+                 
+                 return field
+             
+                
+             
+             
             
         
     
