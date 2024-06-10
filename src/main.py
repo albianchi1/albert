@@ -64,7 +64,7 @@ class snake:
         while mossa in moves:
             if mossa is "N" :
                 
-                testa=[-1][+0]
+                testa[0]=[0]-1
                 
                 
                 
@@ -82,7 +82,7 @@ class snake:
                 
             elif mossa is "S" : 
                 
-                testa=[+1][+0]
+                testa[0]=[0]+1
                 
                 if testa == blocks:
                     
@@ -97,7 +97,7 @@ class snake:
                 
             elif mossa is "E" :
                 
-                testa=[+0][+1]
+                testa[1]=[1]+1
                 
                 if testa == blocks:
                     
@@ -111,7 +111,7 @@ class snake:
                 
             elif mossa is "W" :
                 
-                testa=[+0][-1]
+                testa[1]=[1]-1
                 
                 if testa == blocks:
                     
@@ -125,7 +125,7 @@ class snake:
                     
             elif mossa is "NW" :
                 
-                testa=[-1][-1]
+                testa[0,1]=[0,1]+[-1,-1]
                 
                 if testa == blocks:
                     
@@ -139,7 +139,7 @@ class snake:
                     
             elif mossa is "NE" :
                 
-                testa=[-1][+1]
+                testa[0,1]=[]
                 
                 if testa = blocks:
                     
