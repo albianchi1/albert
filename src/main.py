@@ -121,15 +121,13 @@ class snake:
                 
                 testa[1]= testa[1]-1
                 
-                if testa == blocks:
-                    
-                    return field
-                
-                elif testa == food:
-                    
-                    coda=coda
-                    
-                    lunsnake= testa + coda
+                for list in blocks:
+                    if testa==list:
+                        #termino il gioco
+                        
+                for list in food:
+                    if testa==list:
+                        #aggiiungo corpo al serpente
                     
             elif mossa is "NE" :
                 
@@ -137,15 +135,14 @@ class snake:
                 
                 testa[1]= testa[1]+1
                 
-                if testa = blocks:
-                    
-                    return field
+                for list in blocks:
+                    if testa==list:
+                        #termino il gioco
                 
-                elif testa == food:
-                    
-                    coda=coda
-                    
-                    lunsake= testa + coda
+                for list in food:
+                    if testa==list:
+                        #aggiungo corpo al serpente
+                        
                     
             elif mossa is "SW" :
                 
@@ -153,15 +150,13 @@ class snake:
                 
                 testa[1]= testa[1]-1
                 
-                if testa == blocks:
-                    
-                    return field
-                
-                elif testa == food:
-                    
-                    coda=coda
-                    
-                    lunsnake= testa + coda
+                for list in blocks:
+                    if testa==list:
+                        #termino il gioco
+                        
+                for list in food:
+                    if testa==list:
+                        #aggiungo corpo al serpente
                     
             elif mossa is "SE" :
                 
@@ -169,19 +164,17 @@ class snake:
                 
                 testa[1]= testa[1]+1
                 
-                if testa == blocks:
-                    
-                    return field
-                
-                elif testa == food:
-                    
-                    coda=coda
-                    
-                    lunsnake= testa + coda
+                for list in blocks:
+                    if testa==list:
+                        #termino il gioco
+                        
+                for list in food:
+                    if testa==list:
+                        #aggiungo corpo al serpente
         
              else:
                  
-                 return field
+                 #termino il gioco
              
                 
              
