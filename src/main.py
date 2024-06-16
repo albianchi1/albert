@@ -49,71 +49,62 @@ def my_load_json(filename: str) -> np.ndarray:
 #creo la classe snake
 
 class snake:
-    def init(start,lunsnake):
+    def __init__(self,start,field):
         
-        lunsnake=start
+        self.testa=start
         
-        testa=start
+        self.field=field
         
-        coda=start
+        self.coda=testa
         
-        scia=start
+        self.scia=start
         
-        
-    def go(moves):
-        while mossa in moves:
-            if mossa is "N" :
+      #il metodo go accetta una stringa (posso eliminare il while)  
+      #il metodo go restituisce un metodo booleano che indica se il serpente è andato a sbattere
+    def go(move):
+        if mossa is "N" :
                 
-                testa[0]= testa[0]-1
+            testa[0]= testa[0]-1
             
                 
-                for list in blocks:
-                    if testa==list:
-                        #termino il gioco
+            if self.field.block_in(testa):
+                return False
                     
-                    
-                for list in food:
-                    if testa==list:
-                        #aggiungo corpo al serpente
-                    
+            if self.field.food_in(testa):
+                #aggiorno testa, coda e scia del serpente
+                
                     
                 
             elif mossa is "S" : 
                 
                 testa[0]= testa[0]+1
                 
-                for list in blocks:
-                    if testa==list:
-                        #termino il gioco
+                if self.field.block_in(testa):
+                    return False
                 
-                for list in food:
-                    if testa==list:
-                        #aggiungo corpo al serpente
+                if self.field.food_in(testa):
+                    #aggiorno testa,coda e scia del serpente
                     
                 
             elif mossa is "E" :
                 
                 testa[1]= testa[1]+1
                 
-                for list in blocks:
-                    if testa==list:
-                        #termino il gioco
+                if self.field.block_in(testa):
+                    return False
                 
-                for list in food:
-                    if testa==list:
-                        #aggiungo corpo al serpente
-                
+                if self.field.food_in(testa):
+                    #aggiorno testa, coda e scia del serpente
+                    
             elif mossa is "W" :
                 
                 testa[1]= testa[1]-1
                 
-                for list in blocks:
-                    if testa==list:
-                        #termino il gioco
+                if self.field.block_in(testa):
+                    return False
                 
-                for list in food:
-                    if testa==list:
-                        #aggiungo corpo al serpente
+                if self.field.block_in(testa):
+                    #aggiorno testa, coda e scia del serpente
                     
             elif mossa is "NW" :
                 
@@ -121,13 +112,7 @@ class snake:
                 
                 testa[1]= testa[1]-1
                 
-                for list in blocks:
-                    if testa==list:
-                        #termino il gioco
-                        
-                for list in food:
-                    if testa==list:
-                        #aggiiungo corpo al serpente
+                #scegliere se fare ottimizzazione
                     
             elif mossa is "NE" :
                 
@@ -135,14 +120,7 @@ class snake:
                 
                 testa[1]= testa[1]+1
                 
-                for list in blocks:
-                    if testa==list:
-                        #termino il gioco
-                
-                for list in food:
-                    if testa==list:
-                        #aggiungo corpo al serpente
-                        
+                #scegliere se fare ottimizzazione
                     
             elif mossa is "SW" :
                 
@@ -150,13 +128,7 @@ class snake:
                 
                 testa[1]= testa[1]-1
                 
-                for list in blocks:
-                    if testa==list:
-                        #termino il gioco
-                        
-                for list in food:
-                    if testa==list:
-                        #aggiungo corpo al serpente
+                #scegliere se fare ottimizzazione
                     
             elif mossa is "SE" :
                 
@@ -164,15 +136,9 @@ class snake:
                 
                 testa[1]= testa[1]+1
                 
-                for list in blocks:
-                    if testa==list:
-                        #termino il gioco
-                        
-                for list in food:
-                    if testa==list:
-                        #aggiungo corpo al serpente
-        
-             else:
+                #scegliere se fare ottimizzazione
+                
+            else:
                  
                  #termino il gioco
              
