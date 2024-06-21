@@ -69,9 +69,13 @@ class snake:
                 
             if self.field.block_in(testa):
                 return False
+            
+            scia=[coda]
                     
             if self.field.food_in(testa):
-                #aggiorno testa, coda e scia del serpente
+                coda=testa[0]+1
+                
+        
                 
                     
                 
@@ -103,7 +107,7 @@ class snake:
                 if self.field.block_in(testa):
                     return False
                 
-                if self.field.block_in(testa):
+                if self.field.food_in(testa):
                     #aggiorno testa, coda e scia del serpente
                     
             elif mossa is "NW" :
@@ -112,7 +116,11 @@ class snake:
                 
                 testa[1]= testa[1]-1
                 
-                #scegliere se fare ottimizzazione
+                if self.field.block_in(testa):
+                    return False
+                
+                if self.field.food_in(testa):
+                    #aggiorno testa coda e scia del serpente
                     
             elif mossa is "NE" :
                 
@@ -120,7 +128,11 @@ class snake:
                 
                 testa[1]= testa[1]+1
                 
-                #scegliere se fare ottimizzazione
+                if self.field.block_in(testa):
+                    return False
+                
+                if self.field.food_in(testa):
+                    #aggiorno testa coda e scia del serpente
                     
             elif mossa is "SW" :
                 
@@ -128,7 +140,11 @@ class snake:
                 
                 testa[1]= testa[1]-1
                 
-                #scegliere se fare ottimizzazione
+                if self.field.block_in(testa):
+                    return False
+                
+                if self.field.food_in(testa):
+                    #aggiorno testa coda e scia del serpente
                     
             elif mossa is "SE" :
                 
@@ -136,11 +152,16 @@ class snake:
                 
                 testa[1]= testa[1]+1
                 
-                #scegliere se fare ottimizzazione
+                if self.field.block_in(testa):
+                    return False
+                
+                if self.field.food_in(testa):
+                    #aggiorno testa coda e scia del serpente
+                    
                 
             else:
                  
-                 #termino il gioco
+                 return False
              
                 
              
