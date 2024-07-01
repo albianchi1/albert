@@ -76,7 +76,9 @@ class snake:
                 
                 coda.append(testa[0]+1)
                 
+                scia.append(coda[0])
                 
+                coda=coda[1:]
                 
             
             
