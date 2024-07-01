@@ -55,9 +55,9 @@ class snake:
         
         self.field=field
         
-        self.coda=testa
+        self.coda=[]
         
-        self.scia=start
+        self.scia=[]
         
       #il metodo go accetta una stringa (posso eliminare il while)  
       #il metodo go restituisce un metodo booleano che indica se il serpente è andato a sbattere
@@ -70,14 +70,16 @@ class snake:
             if self.field.block_in(testa):
                 return False
             
-            scia=[coda]
+            
                     
             if self.field.food_in(testa):
-                coda=testa[0]+1
                 
-        
+                coda.append(testa[0]+1)
                 
-                    
+                
+                
+            
+            
                 
             elif mossa is "S" : 
                 
@@ -111,6 +113,7 @@ class snake:
                     #aggiorno testa, coda e scia del serpente
                     
             elif mossa is "NW" :
+                
                 
                 testa[0]= testa[0]-1
                 
