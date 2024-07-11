@@ -61,107 +61,160 @@ class snake:
         
       #il metodo go accetta una stringa (posso eliminare il while)  
       #il metodo go restituisce un metodo booleano che indica se il serpente è andato a sbattere
-    def go(move):
+    def go(self, move):
         if mossa is "N" :
                 
-            testa[0]= testa[0]-1
+            nuovaTesta=(self.testa[0]-1, self.testa[1])
             
                 
-            if self.field.block_in(testa):
+            if self.field.block_in(nuovaTesta):
                 return False
             
             
-                    
-            if self.field.food_in(testa):
-                
-                coda.append(testa[0]+1)
-                
-                scia.append(coda[0])
-                
-                coda=coda[1:]
-                
+            self.coda.append(self.testa)
+            
+            self.testa=nuovaTesta
             
             
+            
+            if self.field.food_in(self.testa):
                 
+                self.scia.append(self.coda[0])
+                
+                self.coda=self.coda[1:]
+                
+            
             elif mossa is "S" : 
                 
-                testa[0]= testa[0]+1
+                nuovaTesta=(self.testa[0]+1, self.testa[1])
                 
-                if self.field.block_in(testa):
+                if self.field.block_in(nuovaTesta):
                     return False
                 
-                if self.field.food_in(testa):
-                    #aggiorno testa,coda e scia del serpente
-                    
+                self.coda.append(self.testa)
                 
+                self.testa=nuovaTesta
+                
+                
+                if self.field.food_in(self.testa):
+                    
+                    self.scia.append(self.coda[0])
+                    
+                    self.coda=self.coda[1:]
+                    
+                    
             elif mossa is "E" :
                 
-                testa[1]= testa[1]+1
+                nuovaTesta=(self.testa[0], self.testa[1]+1)
                 
-                if self.field.block_in(testa):
+                if self.field.block_in(nuovaTesta):
                     return False
                 
+                self.coda.append(self.testa)
+                
+                self.testa=nuovaTesta
+                
+                
                 if self.field.food_in(testa):
-                    #aggiorno testa, coda e scia del serpente
+                    
+                    self.scia.append(self.coda[0])
+                    
+                    self.coda=self.coda[1:]
+                    
                     
             elif mossa is "W" :
                 
-                testa[1]= testa[1]-1
+                nuovaTesta=(self.testa[0], self.testa[1]-1)
                 
-                if self.field.block_in(testa):
+                if self.field.block_in(nuovaTesta):
                     return False
                 
+                self.coda.append(self.testa)
+                
+                self.testa=nuovaTesta
+                
+                
                 if self.field.food_in(testa):
-                    #aggiorno testa, coda e scia del serpente
+                    
+                    self.scia.append(self.coda[0])
+                    
+                    self.coda=self.coda[1:]
+                    
                     
             elif mossa is "NW" :
                 
+                nuovaTesta=(self.testa[0]-1,self.testa[1]-1)
                 
-                testa[0]= testa[0]-1
-                
-                testa[1]= testa[1]-1
-                
-                if self.field.block_in(testa):
+                if self.field.block_in(nuovaTesta):
                     return False
                 
+                self.coda.append(self.testa)
+                
+                self.testa=nuovaTesta
+                
+                
                 if self.field.food_in(testa):
-                    #aggiorno testa coda e scia del serpente
                     
+                    self.scia.append(self.coda[0])
+
+                    self.coda=self.coda[1:]
+                    
+
             elif mossa is "NE" :
                 
-                testa[0]= testa[0]-1
+                nuovaTesta=(self.testa[0]-1,self.testa[1]+1)
                 
-                testa[1]= testa[1]+1
-                
-                if self.field.block_in(testa):
+                if self.field.block_in(nuovaTesta):
                     return False
                 
+                self.coda.append(self.testa)
+                
+                self.testa=nuovaTesta
+                
+                
                 if self.field.food_in(testa):
-                    #aggiorno testa coda e scia del serpente
+                    
+                    self.scia.append(self.coda[0])
+                    
+                    self.coda=self.coda[1:]
+                    
                     
             elif mossa is "SW" :
                 
-                testa[0]= testa[0]+1
+                nuovaTesta=(self.testa[0]+1,self.testa[1]-1)
                 
-                testa[1]= testa[1]-1
-                
-                if self.field.block_in(testa):
+                if self.field.block_in(nuovaTesta):
                     return False
                 
+                self.coda.append(self.testa)
+                
+                self.testa=nuovaTesta
+                
+                
                 if self.field.food_in(testa):
-                    #aggiorno testa coda e scia del serpente
+                    
+                    self.scia.append(self.coda[0])
+                    
+                    self.coda=self.coda[1:]
+                    
                     
             elif mossa is "SE" :
                 
-                testa[0]= testa[0]+1
+                nuovaTesta=(self.testa[0]+1, self.testa[1]+1)
                 
-                testa[1]= testa[1]+1
-                
-                if self.field.block_in(testa):
+                if self.field.block_in(nuovatTesta):
                     return False
                 
+                self.coda.append(self.testa)
+                
+                self.testa=nuovaTesta
+                
+                
                 if self.field.food_in(testa):
-                    #aggiorno testa coda e scia del serpente
+                    
+                    self.scia.append(self.coda[0])
+                    
+                    self.coda=self.coda[1:]
                     
                 
             else:
