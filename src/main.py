@@ -59,8 +59,8 @@ class snake:
         
         self.scia=[]
         
-      #il metodo go accetta una stringa (posso eliminare il while)  
-      #il metodo go restituisce un metodo booleano che indica se il serpente è andato a sbattere
+       
+      #il metodo go restituisce un metodo booleano che indica se il serpente è an
     def go(self, move):
         if mossa is "N" :
                 
@@ -248,10 +248,18 @@ def play(game_file: str) -> int:
         if field_in.endswith('.png'):
             my_load_image(field_in)
             
+            #chiamo la classe snake
             
+            gioco_snake= snake(start,field_in)
             
         elif field_in.endswith('.json'):
             my_load_json(field_in)
+            
+            #chiamo la classe snake
+            
+            gioco_snake= snake(start,field_in)
+            
+            
 
 
         
