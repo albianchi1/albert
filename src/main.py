@@ -62,7 +62,7 @@ class snake:
        
       #il metodo go restituisce un metodo booleano che indica se il serpente è an
     def go(self, move):
-        if mossa is "N" :
+        if move is "N" :
                 
             nuovaTesta=(self.testa[0]-1, self.testa[1])
             
@@ -84,7 +84,7 @@ class snake:
                 self.coda=self.coda[1:]
                 
             
-            elif mossa is "S" : 
+            elif move is "S" : 
                 
                 nuovaTesta=(self.testa[0]+1, self.testa[1])
                 
@@ -103,7 +103,7 @@ class snake:
                     self.coda=self.coda[1:]
                     
                     
-            elif mossa is "E" :
+            elif move is "E" :
                 
                 nuovaTesta=(self.testa[0], self.testa[1]+1)
                 
@@ -122,7 +122,7 @@ class snake:
                     self.coda=self.coda[1:]
                     
                     
-            elif mossa is "W" :
+            elif move is "W" :
                 
                 nuovaTesta=(self.testa[0], self.testa[1]-1)
                 
@@ -141,7 +141,7 @@ class snake:
                     self.coda=self.coda[1:]
                     
                     
-            elif mossa is "NW" :
+            elif move is "NW" :
                 
                 nuovaTesta=(self.testa[0]-1,self.testa[1]-1)
                 
@@ -160,7 +160,7 @@ class snake:
                     self.coda=self.coda[1:]
                     
 
-            elif mossa is "NE" :
+            elif move is "NE" :
                 
                 nuovaTesta=(self.testa[0]-1,self.testa[1]+1)
                 
@@ -179,7 +179,7 @@ class snake:
                     self.coda=self.coda[1:]
                     
                     
-            elif mossa is "SW" :
+            elif move is "SW" :
                 
                 nuovaTesta=(self.testa[0]+1,self.testa[1]-1)
                 
@@ -198,7 +198,7 @@ class snake:
                     self.coda=self.coda[1:]
                     
                     
-            elif mossa is "SE" :
+            elif move is "SE" :
                 
                 nuovaTesta=(self.testa[0]+1, self.testa[1]+1)
                 
@@ -252,12 +252,16 @@ def play(game_file: str) -> int:
             
             gioco_snake= snake(start,field_in)
             
+            gioco_snake.go(move)
+            
         elif field_in.endswith('.json'):
             my_load_json(field_in)
             
             #chiamo la classe snake
             
             gioco_snake= snake(start,field_in)
+            
+            gioco_snake.go(move)
             
             
 
