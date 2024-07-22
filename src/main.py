@@ -221,8 +221,7 @@ class snake:
                  
                  return False
              
-                
-             
+                    
              
             
         
@@ -252,7 +251,9 @@ def play(game_file: str) -> int:
             
             gioco_snake= snake(start,field_in)
             
-            gioco_snake.go(move)
+            gioco_snake.go(moves)
+            
+            gioco_snake(field)=field_out
             
         elif field_in.endswith('.json'):
             my_load_json(field_in)
@@ -263,7 +264,7 @@ def play(game_file: str) -> int:
             
             gioco_snake.go(move)
             
-            
+            gioco_snake(field)=field_out
 
 
         
