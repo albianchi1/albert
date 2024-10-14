@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Oct 14 09:27:36 2024
+
+@author: alber
+"""
+
 import numpy as np
 
 """converto un file PNG in una matrice"""
@@ -46,11 +53,4 @@ def my_load_json(filename: str) -> np.ndarray:
 
 #esempio di come viene se richiamo la funzione con un dei file json
 print(my_load_json("data/field_02.json"))
-
-
-
-
-
-
-
 
