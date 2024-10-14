@@ -54,3 +54,38 @@ def my_load_json(filename: str) -> np.ndarray:
 #esempio di come viene se richiamo la funzione con un dei file json
 print(my_load_json("data/field_02.json"))
 
+
+
+
+def play(game_file: str) -> int:
+    with open(game_file) as gamefile:
+        jsondata = json.load(gamefile)
+        print(jsondata)
+        
+        field_in = jsondata["field_in"]
+        start = jsondata["start"]
+        moves = jsondata["moves"]
+        field_out = jsondata["field_out"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
