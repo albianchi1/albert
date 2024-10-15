@@ -55,7 +55,181 @@ def my_load_json(filename: str) -> np.ndarray:
 print(my_load_json("data/field_02.json"))
 
 
+#creo la classe snake
 
+class snake:
+    def __init__(self,start,field):
+        
+        self.testa=start
+        
+        self.field=field
+        
+        self.coda=[]
+        
+        self.scia=[]
+        
+       
+      #il metodo go restituisce un metodo booleano che indica se il serpente è an
+    def go(self, move):
+        if move is "N" :
+                
+            nuovaTesta=(self.testa[0]-1, self.testa[1])
+            
+                
+            if self.field.block_in(nuovaTesta):
+                return False
+            
+            
+            self.coda.append(self.testa)
+            
+            self.testa=nuovaTesta
+            
+            
+            
+            if self.field.food_in(self.testa):
+                
+                self.scia.append(self.coda[0])
+                
+                self.coda=self.coda[1:]
+                
+            
+            elif move is "S" : 
+                
+                nuovaTesta=(self.testa[0]+1, self.testa[1])
+                
+                if self.field.block_in(nuovaTesta):
+                    return False
+                
+                self.coda.append(self.testa)
+                
+                self.testa=nuovaTesta
+                
+                
+                if self.field.food_in(self.testa):
+                    
+                    self.scia.append(self.coda[0])
+                    
+                    self.coda=self.coda[1:]
+                    
+                    
+            elif move is "E" :
+                
+                nuovaTesta=(self.testa[0], self.testa[1]+1)
+                
+                if self.field.block_in(nuovaTesta):
+                    return False
+                
+                self.coda.append(self.testa)
+                
+                self.testa=nuovaTesta
+                
+                
+                if self.field.food_in(testa):
+                    
+                    self.scia.append(self.coda[0])
+                    
+                    self.coda=self.coda[1:]
+                    
+                    
+            elif move is "W" :
+                
+                nuovaTesta=(self.testa[0], self.testa[1]-1)
+                
+                if self.field.block_in(nuovaTesta):
+                    return False
+                
+                self.coda.append(self.testa)
+                
+                self.testa=nuovaTesta
+                
+                
+                if self.field.food_in(testa):
+                    
+                    self.scia.append(self.coda[0])
+                    
+                    self.coda=self.coda[1:]
+                    
+                    
+            elif move is "NW" :
+                
+                nuovaTesta=(self.testa[0]-1,self.testa[1]-1)
+                
+                if self.field.block_in(nuovaTesta):
+                    return False
+                
+                self.coda.append(self.testa)
+                
+                self.testa=nuovaTesta
+                
+                
+                if self.field.food_in(testa):
+                    
+                    self.scia.append(self.coda[0])
+
+                    self.coda=self.coda[1:]
+                    
+
+            elif move is "NE" :
+                
+                nuovaTesta=(self.testa[0]-1,self.testa[1]+1)
+                
+                if self.field.block_in(nuovaTesta):
+                    return False
+                
+                self.coda.append(self.testa)
+                
+                self.testa=nuovaTesta
+                
+                
+                if self.field.food_in(testa):
+                    
+                    self.scia.append(self.coda[0])
+                    
+                    self.coda=self.coda[1:]
+                    
+                    
+            elif move is "SW" :
+                
+                nuovaTesta=(self.testa[0]+1,self.testa[1]-1)
+                
+                if self.field.block_in(nuovaTesta):
+                    return False
+                
+                self.coda.append(self.testa)
+                
+                self.testa=nuovaTesta
+                
+                
+                if self.field.food_in(testa):
+                    
+                    self.scia.append(self.coda[0])
+                    
+                    self.coda=self.coda[1:]
+                    
+                    
+            elif move is "SE" :
+                
+                nuovaTesta=(self.testa[0]+1, self.testa[1]+1)
+                
+                if self.field.block_in(nuovatTesta):
+                    return False
+                
+                self.coda.append(self.testa)
+                
+                self.testa=nuovaTesta
+                
+                
+                if self.field.food_in(testa):
+                    
+                    self.scia.append(self.coda[0])
+                    
+                    self.coda=self.coda[1:]
+                    
+                
+            else:
+                 
+                 return False
+             
 
 def play(game_file: str) -> int:
     with open(game_file) as gamefile:
