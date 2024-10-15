@@ -55,7 +55,7 @@ def my_load_json(filename: str) -> np.ndarray:
 print(my_load_json("data/field_02.json"))
 
 
-#creo la classe snake
+"""creo la classe snake"""
 
 class snake:
     def __init__(self,start,field):
@@ -69,7 +69,7 @@ class snake:
         self.scia=[]
         
        
-      #il metodo go restituisce un metodo booleano che indica se il serpente è an
+      """il metodo go restituisce un metodo booleano che indica se il serpente è ancora in gioco"""
     def go(self, move):
         if move is "N" :
                 
@@ -242,8 +242,20 @@ def play(game_file: str) -> int:
         field_out = jsondata["field_out"]
 
 
-
-
+        #vedo l'estensione del file field_in se PNG o JSON
+    
+        if field_in.endswith('.png'):
+            
+            field=my_load_image("data/field_01.png")
+            
+            serpente= snake(start, field)
+            
+            
+        elif field_in.endswith('.json'):
+            
+            field=my_load_json("data/field_01.json")
+            
+            serpente= snake(start,field)
 
 
 
