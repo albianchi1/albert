@@ -68,8 +68,9 @@ class snake:
         
         self.scia=[]
         
-       
-      """il metodo go restituisce un metodo booleano che indica se il serpente è ancora in gioco"""
+        
+    """"il metodo go restituisce un metodo booleano che indica se il serpente è ancora in gioco"""
+      
     def go(self, move):
         
         if move is "N" :
@@ -84,29 +85,39 @@ class snake:
             if self.field.block_in(nuovaTesta):
                 return False
             
-            """vedo se il serpente ha solo la "casella" della testa, in quel caso aggiornare scia del serpente"""
+            """altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se sì aggiornare scia, testa  e coda del serpente"""
 
-            if self.coda==[]:
-                
-                self.scia.append(self.testa)
-                
-                self.testa=nuovaTesta
-             
-             """"altrimenti aggiornare coda del serpente"""   
-             
-            else:
-                
-                self.coda.append(self.testa)
-            
-                self.testa=nuovaTesta
-            
-            """vedo se il serpente ha incontrato cibo in quel caso aggiornare scia e coda del serpente"""
-            
-            if self.field.food_in(self.testa):
-                
+            elif self.field.food_in(self.testa):
+                            
                 self.scia.append(self.coda[0])
-                
+                            
                 self.coda=self.coda[1:]
+
+                self.testa=nuovaTesta                 
+                
+
+            else:
+               
+               """se il serpente ha solo la testa aggiorno la scia e la testa del serpente""" 
+               
+               if self.coda==[]:
+                
+                   self.scia.append(self.testa)
+                
+                   self.testa=nuovaTesta
+            
+                """"altrimenti aggiornare coda, scia e testa del serpente""" 
+             
+               else:
+                
+                   self.coda.append(self.testa)
+                
+                   self.scia.append(self.coda[0])
+                
+                   self.coda=self.coda[1:]
+                
+                   self.testa=nuovaTesta
+            
                 
             
             elif move is "S" : 
