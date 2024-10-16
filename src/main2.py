@@ -71,20 +71,36 @@ class snake:
        
       """il metodo go restituisce un metodo booleano che indica se il serpente è ancora in gioco"""
     def go(self, move):
+        
         if move is "N" :
-                
+            
+            """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
+            
             nuovaTesta=(self.testa[0]-1, self.testa[1])
             
-                
+            """controllo se la nuova Testa del serpente ha incontrato un blocco in quel caso finire il gioco
+            restituendo il valore booleano False"""
+            
             if self.field.block_in(nuovaTesta):
                 return False
             
+            """vedo se il serpente ha solo la "casella" della testa, in quel caso aggiornare scia del serpente"""
+
+            if self.coda==[]:
+                
+                self.scia.append(self.testa)
+                
+                self.testa=nuovaTesta
+             
+             """"altrimenti aggiornare coda del serpente"""   
+             
+            else:
+                
+                self.coda.append(self.testa)
             
-            self.coda.append(self.testa)
+                self.testa=nuovaTesta
             
-            self.testa=nuovaTesta
-            
-            
+            """vedo se il serpente ha incontrato cibo in quel caso aggiornare scia e coda del serpente"""
             
             if self.field.food_in(self.testa):
                 
