@@ -74,7 +74,7 @@ class snake:
     def go(self, move):
         
         if move is "N" :
-            
+               
             """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
             
             nuovaTesta=(self.testa[0]-1, self.testa[1])
@@ -85,9 +85,9 @@ class snake:
             if self.field.block_in(nuovaTesta):
                 return False
             
-            """altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se sì aggiornare scia, testa  e coda del serpente"""
+            #altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se si aggiornare testa, coda e scia del serpente
 
-            elif self.field.food_in(self.testa):
+            elif self.field.food_in(self.testa): 
                             
                 self.scia.append(self.coda[0])
                             
@@ -105,8 +105,146 @@ class snake:
                    self.scia.append(self.testa)
                 
                    self.testa=nuovaTesta
+                   
+               #altrimenti aggiornare coda,testa e scia del serpente
+             
+               else:
+                
+                   self.coda.append(self.testa)
+                
+                   self.scia.append(self.coda[0])
+                
+                   self.coda=self.coda[1:]
+                
+                   self.testa=nuovaTesta
+                   
+           
+        elif move is "S":
             
-                """"altrimenti aggiornare coda, scia e testa del serpente""" 
+            """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
+            
+            nuovaTesta=(self.testa[0]+1, self.testa[1])
+            
+            """controllo se la nuova Testa del serpente ha incontrato un blocco in quel caso finire il gioco
+            restituendo il valore booleano False"""
+            
+            if self.field.block_in(nuovaTesta):
+                return False
+            
+            #altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se si aggiornare testa, coda e scia del serpente
+
+            elif self.field.food_in(self.testa): 
+                            
+                self.scia.append(self.coda[0])
+                            
+                self.coda=self.coda[1:]
+
+                self.testa=nuovaTesta                 
+                
+
+            else:
+               
+               """se il serpente ha solo la testa aggiorno la scia e la testa del serpente""" 
+               
+               if self.coda==[]:
+                
+                   self.scia.append(self.testa)
+                
+                   self.testa=nuovaTesta
+                   
+               #altrimenti aggiornare coda,testa e scia del serpente
+             
+               else:
+                
+                   self.coda.append(self.testa)
+                
+                   self.scia.append(self.coda[0])
+                
+                   self.coda=self.coda[1:]
+                
+                   self.testa=nuovaTesta
+                   
+           
+        elif move is "E":
+            
+            """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
+            
+            nuovaTesta=(self.testa[0], self.testa[1]+1)
+            
+            """controllo se la nuova Testa del serpente ha incontrato un blocco in quel caso finire il gioco
+            restituendo il valore booleano False"""
+            
+            if self.field.block_in(nuovaTesta):
+                return False
+            
+            #altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se si aggiornare testa, coda e scia del serpente
+
+            elif self.field.food_in(self.testa): 
+                            
+                self.scia.append(self.coda[0])
+                            
+                self.coda=self.coda[1:]
+
+                self.testa=nuovaTesta                 
+                
+
+            else:
+               
+               """se il serpente ha solo la testa aggiorno la scia e la testa del serpente""" 
+               
+               if self.coda==[]:
+                
+                   self.scia.append(self.testa)
+                
+                   self.testa=nuovaTesta
+                   
+               #altrimenti aggiornare coda,testa e scia del serpente
+             
+               else:
+                
+                   self.coda.append(self.testa)
+                
+                   self.scia.append(self.coda[0])
+                
+                   self.coda=self.coda[1:]
+                
+                   self.testa=nuovaTesta
+                   
+                   
+        elif move is "W":
+            
+            """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
+            
+            nuovaTesta=(self.testa[0], self.testa[1]-1)
+            
+            """controllo se la nuova Testa del serpente ha incontrato un blocco in quel caso finire il gioco
+            restituendo il valore booleano False"""
+            
+            if self.field.block_in(nuovaTesta):
+                return False
+            
+            #altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se si aggiornare testa, coda e scia del serpente
+
+            elif self.field.food_in(self.testa): 
+                            
+                self.scia.append(self.coda[0])
+                            
+                self.coda=self.coda[1:]
+
+                self.testa=nuovaTesta                 
+                
+
+            else:
+               
+               """se il serpente ha solo la testa aggiorno la scia e la testa del serpente""" 
+               
+               if self.coda==[]:
+                
+                   self.scia.append(self.testa)
+                
+                   self.testa=nuovaTesta
+                   
+               #altrimenti aggiornare coda,testa e scia del serpente
              
                else:
                 
@@ -118,144 +256,206 @@ class snake:
                 
                    self.testa=nuovaTesta
             
-                
+           
+        elif move is "NW":
             
-            elif move is "S" : 
-                
-                nuovaTesta=(self.testa[0]+1, self.testa[1])
-                
-                if self.field.block_in(nuovaTesta):
-                    return False
-                
-                self.coda.append(self.testa)
-                
-                self.testa=nuovaTesta
-                
-                
-                if self.field.food_in(self.testa):
-                    
-                    self.scia.append(self.coda[0])
-                    
-                    self.coda=self.coda[1:]
-                    
-                    
-            elif move is "E" :
-                
-                nuovaTesta=(self.testa[0], self.testa[1]+1)
-                
-                if self.field.block_in(nuovaTesta):
-                    return False
-                
-                self.coda.append(self.testa)
-                
-                self.testa=nuovaTesta
-                
-                
-                if self.field.food_in(testa):
-                    
-                    self.scia.append(self.coda[0])
-                    
-                    self.coda=self.coda[1:]
-                    
-                    
-            elif move is "W" :
-                
-                nuovaTesta=(self.testa[0], self.testa[1]-1)
-                
-                if self.field.block_in(nuovaTesta):
-                    return False
-                
-                self.coda.append(self.testa)
-                
-                self.testa=nuovaTesta
-                
-                
-                if self.field.food_in(testa):
-                    
-                    self.scia.append(self.coda[0])
-                    
-                    self.coda=self.coda[1:]
-                    
-                    
-            elif move is "NW" :
-                
-                nuovaTesta=(self.testa[0]-1,self.testa[1]-1)
-                
-                if self.field.block_in(nuovaTesta):
-                    return False
-                
-                self.coda.append(self.testa)
-                
-                self.testa=nuovaTesta
-                
-                
-                if self.field.food_in(testa):
-                    
-                    self.scia.append(self.coda[0])
+            """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
+            
+            nuovaTesta=(self.testa[0]-1,self.testa[1]-1)
+            
+            """controllo se la nuova Testa del serpente ha incontrato un blocco in quel caso finire il gioco
+            restituendo il valore booleano False"""
+            
+            if self.field.block_in(nuovaTesta):
+                return False
+            
+            #altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se si aggiornare testa, coda e scia del serpente
 
-                    self.coda=self.coda[1:]
-                    
+            elif self.field.food_in(self.testa): 
+                            
+                self.scia.append(self.coda[0])
+                            
+                self.coda=self.coda[1:]
 
-            elif move is "NE" :
+                self.testa=nuovaTesta                 
                 
-                nuovaTesta=(self.testa[0]-1,self.testa[1]+1)
-                
-                if self.field.block_in(nuovaTesta):
-                    return False
-                
-                self.coda.append(self.testa)
-                
-                self.testa=nuovaTesta
-                
-                
-                if self.field.food_in(testa):
-                    
-                    self.scia.append(self.coda[0])
-                    
-                    self.coda=self.coda[1:]
-                    
-                    
-            elif move is "SW" :
-                
-                nuovaTesta=(self.testa[0]+1,self.testa[1]-1)
-                
-                if self.field.block_in(nuovaTesta):
-                    return False
-                
-                self.coda.append(self.testa)
-                
-                self.testa=nuovaTesta
-                
-                
-                if self.field.food_in(testa):
-                    
-                    self.scia.append(self.coda[0])
-                    
-                    self.coda=self.coda[1:]
-                    
-                    
-            elif move is "SE" :
-                
-                nuovaTesta=(self.testa[0]+1, self.testa[1]+1)
-                
-                if self.field.block_in(nuovatTesta):
-                    return False
-                
-                self.coda.append(self.testa)
-                
-                self.testa=nuovaTesta
-                
-                
-                if self.field.food_in(testa):
-                    
-                    self.scia.append(self.coda[0])
-                    
-                    self.coda=self.coda[1:]
-                    
-                
+
             else:
-                 
-                 return False
+               
+               """se il serpente ha solo la testa aggiorno la scia e la testa del serpente""" 
+               
+               if self.coda==[]:
+                
+                   self.scia.append(self.testa)
+                
+                   self.testa=nuovaTesta
+                   
+               #altrimenti aggiornare coda,testa e scia del serpente
+             
+               else:
+                
+                   self.coda.append(self.testa)
+                
+                   self.scia.append(self.coda[0])
+                
+                   self.coda=self.coda[1:]
+                
+                   self.testa=nuovaTesta
+                   
+           
+        elif move is "NE":
+            
+            """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
+            
+            nuovaTesta=(self.testa[0]-1,self.testa[1]+1) 
+            
+            """controllo se la nuova Testa del serpente ha incontrato un blocco in quel caso finire il gioco
+            restituendo il valore booleano False"""
+            
+            if self.field.block_in(nuovaTesta):
+                return False
+            
+            #altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se si aggiornare testa, coda e scia del serpente
+
+            elif self.field.food_in(self.testa): 
+                            
+                self.scia.append(self.coda[0])
+                            
+                self.coda=self.coda[1:]
+
+                self.testa=nuovaTesta                 
+                
+
+            else:
+               
+               """se il serpente ha solo la testa aggiorno la scia e la testa del serpente""" 
+               
+               if self.coda==[]:
+                
+                   self.scia.append(self.testa)
+                
+                   self.testa=nuovaTesta
+                   
+               #altrimenti aggiornare coda,testa e scia del serpente
+             
+               else:
+                
+                   self.coda.append(self.testa)
+                
+                   self.scia.append(self.coda[0])
+                
+                   self.coda=self.coda[1:]
+                
+                   self.testa=nuovaTesta
+                   
+                   
+           
+        elif move is "SW":
+            
+            """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
+            
+            nuovaTesta=(self.testa[0]+1,self.testa[1]-1)
+            
+            """controllo se la nuova Testa del serpente ha incontrato un blocco in quel caso finire il gioco
+            restituendo il valore booleano False"""
+            
+            if self.field.block_in(nuovaTesta):
+                return False
+            
+            #altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se si aggiornare testa, coda e scia del serpente
+
+            elif self.field.food_in(self.testa): 
+                            
+                self.scia.append(self.coda[0])
+                            
+                self.coda=self.coda[1:]
+
+                self.testa=nuovaTesta                 
+                
+
+            else:
+               
+               """se il serpente ha solo la testa aggiorno la scia e la testa del serpente""" 
+               
+               if self.coda==[]:
+                
+                   self.scia.append(self.testa)
+                
+                   self.testa=nuovaTesta
+                   
+               #altrimenti aggiornare coda,testa e scia del serpente
+             
+               else:
+                
+                   self.coda.append(self.testa)
+                
+                   self.scia.append(self.coda[0])
+                
+                   self.coda=self.coda[1:]
+                
+                   self.testa=nuovaTesta
+                   
+                   
+           
+        elif move is "SE":
+            
+            """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
+            
+            nuovaTesta=(self.testa[0]+1, self.testa[1]+1)
+            
+            """controllo se la nuova Testa del serpente ha incontrato un blocco in quel caso finire il gioco
+            restituendo il valore booleano False"""
+            
+            if self.field.block_in(nuovaTesta):
+                return False
+            
+            #altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se si aggiornare testa, coda e scia del serpente
+
+            elif self.field.food_in(self.testa): 
+                            
+                self.scia.append(self.coda[0])
+                            
+                self.coda=self.coda[1:]
+
+                self.testa=nuovaTesta                 
+                
+
+            else:
+               
+               """se il serpente ha solo la testa aggiorno la scia e la testa del serpente""" 
+               
+               if self.coda==[]:
+                
+                   self.scia.append(self.testa)
+                
+                   self.testa=nuovaTesta
+                   
+               #altrimenti aggiornare coda,testa e scia del serpente
+             
+               else:
+                
+                   self.coda.append(self.testa)
+                
+                   self.scia.append(self.coda[0])
+                
+                   self.coda=self.coda[1:]
+                
+                   self.testa=nuovaTesta
+                   
+                   
+           
+        else:
+            
+            return False
+        
+        
+        
+            
+            
+           
+
+              
+
              
 
 def play(game_file: str) -> int:
@@ -273,16 +473,27 @@ def play(game_file: str) -> int:
     
         if field_in.endswith('.png'):
             
-            field=my_load_image("data/field_01.png")
+            field=my_load_image("data/field_01.png") #richiamo la funzione my_load_image
             
-            serpente= snake(start, field)
+            serpente= snake(start, field)  
+            
+            for move in moves:
+                
+                serpente.go(move)  #da rivedere (passo le mosse al metodo go della classe snake)
+            
+            
             
             
         elif field_in.endswith('.json'):
             
-            field=my_load_json("data/field_01.json")
+            field=my_load_json("data/field_01.json") #richiamo la funzione my_load_json
             
             serpente= snake(start,field)
+            
+            for move in moves:
+                
+                serpente.go(move)  #da rivedere (passo le mosse al metodo go della classe snake)
+            
 
 
 
