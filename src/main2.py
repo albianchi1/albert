@@ -73,7 +73,7 @@ class snake:
       
     def go(self, move):
         
-        if move is "N" :
+        if move == "N" :
                
             """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
             
@@ -91,7 +91,9 @@ class snake:
                             
                 self.coda.append(self.testa)
 
-                self.testa=nuovaTesta                 
+                self.testa=nuovaTesta    
+                
+            #eseguo condizione tale per cui se il serpente oltrepassa la fine del campo da gioco riappare dall'altra parte del campo
                 
 
             else:
@@ -117,7 +119,7 @@ class snake:
                    self.testa=nuovaTesta
                    
            
-        elif move is "S":
+        elif move == "S":
             
             """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
             
@@ -161,7 +163,7 @@ class snake:
                    self.testa=nuovaTesta
                    
            
-        elif move is "E":
+        elif move == "E":
             
             """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
             
@@ -205,7 +207,7 @@ class snake:
                    self.testa=nuovaTesta
                    
                    
-        elif move is "W":
+        elif move == "W":
             
             """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
             
@@ -249,7 +251,7 @@ class snake:
                    self.testa=nuovaTesta
             
            
-        elif move is "NW":
+        elif move == "NW":
             
             """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
             
@@ -293,7 +295,7 @@ class snake:
                    self.testa=nuovaTesta
                    
            
-        elif move is "NE":
+        elif move == "NE":
             
             """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
             
@@ -338,7 +340,7 @@ class snake:
                    
                    
            
-        elif move is "SW":
+        elif move == "SW":
             
             """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
             
@@ -383,7 +385,7 @@ class snake:
                    
                    
            
-        elif move is "SE":
+        elif move == "SE":
             
             """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
             
