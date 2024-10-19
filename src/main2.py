@@ -89,9 +89,7 @@ class snake:
 
             elif self.field.food_in(self.testa): 
                             
-                self.scia.append(self.coda[0])
-                            
-                self.coda=self.coda[1:]
+                self.coda.append(self.testa)
 
                 self.testa=nuovaTesta                 
                 
@@ -135,10 +133,8 @@ class snake:
 
             elif self.field.food_in(self.testa): 
                             
-                self.scia.append(self.coda[0])
+                self.coda.append(self.testa)
                             
-                self.coda=self.coda[1:]
-
                 self.testa=nuovaTesta                 
                 
 
@@ -181,10 +177,8 @@ class snake:
 
             elif self.field.food_in(self.testa): 
                             
-                self.scia.append(self.coda[0])
+                self.coda.append(self.testa)
                             
-                self.coda=self.coda[1:]
-
                 self.testa=nuovaTesta                 
                 
 
@@ -227,9 +221,7 @@ class snake:
 
             elif self.field.food_in(self.testa): 
                             
-                self.scia.append(self.coda[0])
-                            
-                self.coda=self.coda[1:]
+                self.coda.append(self.testa)
 
                 self.testa=nuovaTesta                 
                 
@@ -273,9 +265,7 @@ class snake:
 
             elif self.field.food_in(self.testa): 
                             
-                self.scia.append(self.coda[0])
-                            
-                self.coda=self.coda[1:]
+                self.coda.append(self.testa)
 
                 self.testa=nuovaTesta                 
                 
@@ -296,7 +286,7 @@ class snake:
                 
                    self.coda.append(self.testa)
                 
-                   self.scia.append(self.coda[0])
+                   self.coda.append(self.testa)
                 
                    self.coda=self.coda[1:]
                 
@@ -319,9 +309,7 @@ class snake:
 
             elif self.field.food_in(self.testa): 
                             
-                self.scia.append(self.coda[0])
-                            
-                self.coda=self.coda[1:]
+                self.coda.append(self.testa)
 
                 self.testa=nuovaTesta                 
                 
@@ -366,9 +354,7 @@ class snake:
 
             elif self.field.food_in(self.testa): 
                             
-                self.scia.append(self.coda[0])
-                            
-                self.coda=self.coda[1:]
+                self.coda.append(self.testa)
 
                 self.testa=nuovaTesta                 
                 
@@ -413,9 +399,7 @@ class snake:
 
             elif self.field.food_in(self.testa): 
                             
-                self.scia.append(self.coda[0])
-                            
-                self.coda=self.coda[1:]
+                self.coda.append(self.testa)
 
                 self.testa=nuovaTesta                 
                 
