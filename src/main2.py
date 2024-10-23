@@ -40,9 +40,10 @@ def my_load_json(filename: str) -> np.ndarray:
       field = np.zeros((rows, cols, 3), dtype=np.uint8)
       
       
-      for [x,y] in food:
+      for [x,y] in food: 
           field[x][y]=(255,128,0)
           
+              
       for [x,y] in blocks:
           field[x][y]=(255,0,0)
           
@@ -81,7 +82,7 @@ class snake:
             
             if nuovaTesta not in self.field:
                 
-                nuovaTesta=(self.testa[0]%(len(row(self.field))), self.testa[1])
+                nuovaTesta=(self.testa[0]%(((self.field).ndim)), self.testa[1])
                 
                 self.coda.append(self.testa)
                 
@@ -94,12 +95,12 @@ class snake:
             """controllo se la nuova Testa del serpente ha incontrato un blocco in quel caso finire il gioco
             restituendo il valore booleano False"""
             
-            if self.field.block_in(nuovaTesta):
+            if self.field.blocks(nuovaTesta):
                 return False
             
             #altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se si aggiornare testa, coda e scia del serpente
 
-            if self.field.food_in(nuovaTesta): 
+            if self.field.food(nuovaTesta): 
                             
                 self.coda.append(self.testa)
 
@@ -140,7 +141,7 @@ class snake:
             
             if nuovaTesta not in self.field:
                 
-                nuovaTesta=(self.testa[0]%(len(row(self.field))), self.testa[1])
+                nuovaTesta=(self.testa[0]%(((self.field).ndim)), self.testa[1])
                 
                 self.coda.append(self.testa)
                 
@@ -153,12 +154,12 @@ class snake:
             """controllo se la nuova Testa del serpente ha incontrato un blocco in quel caso finire il gioco
             restituendo il valore booleano False"""
             
-            if self.field.block_in(nuovaTesta):
+            if self.field.blocks(nuovaTesta):
                 return False
             
             #altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se si aggiornare testa, coda e scia del serpente
 
-            if self.field.food_in(nuovaTesta): 
+            if self.field.food(nuovaTesta): 
                             
                 self.coda.append(self.testa)
                             
@@ -197,7 +198,7 @@ class snake:
             
             if nuovaTesta not in self.field:
                 
-                nuovaTesta=(self.testa[0], self.testa[1]%(len(col(self.field))))
+                nuovaTesta=(self.testa[0], self.testa[1]%(((self.field).ndim)))
                 
                 self.coda.append(self.testa)
                 
@@ -210,12 +211,12 @@ class snake:
             """controllo se la nuova Testa del serpente ha incontrato un blocco in quel caso finire il gioco
             restituendo il valore booleano False"""
             
-            if self.field.block_in(nuovaTesta):
+            if self.field.blocks(nuovaTesta):
                 return False
             
             #altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se si aggiornare testa, coda e scia del serpente
 
-            if self.field.food_in(nuovaTesta): 
+            if self.field.food(nuovaTesta): 
                             
                 self.coda.append(self.testa)
                             
@@ -254,7 +255,7 @@ class snake:
             
             if nuovaTesta not in self.field:
                 
-                nuovaTesta=(self.testa[0], self.testa[1]%(len(col(self.field))))
+                nuovaTesta=(self.testa[0], self.testa[1]%(((self.field).ndim)))
                 
                 self.coda.append(self.testa)
                 
@@ -267,12 +268,12 @@ class snake:
             """controllo se la nuova Testa del serpente ha incontrato un blocco in quel caso finire il gioco
             restituendo il valore booleano False"""
             
-            if self.field.block_in(nuovaTesta):
+            if self.field.blocks(nuovaTesta):
                 return False
             
             #altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se si aggiornare testa, coda e scia del serpente
 
-            if self.field.food_in(nuovaTesta): 
+            if self.field.food(nuovaTesta): 
                             
                 self.coda.append(self.testa)
 
@@ -311,7 +312,7 @@ class snake:
             
             if nuovaTesta[0] not in self.field:
                 
-                nuovaTesta[0]=(self.testa[0]%(len(row(self.field))))
+                nuovaTesta[0]=(self.testa[0]%(((self.field).ndim)))
                 
                 self.coda.append(self.testa)
                 
@@ -323,7 +324,7 @@ class snake:
                 
             if nuovaTesta[1] not in self.field:
                 
-                nuovaTesta[1]=(self.testa[1]%(len(col(self.field))))
+                nuovaTesta[1]=(self.testa[1]%(((self.field).ndim)))
                 
                 self.coda.append(self.testa)
                 
@@ -337,12 +338,12 @@ class snake:
             """controllo se la nuova Testa del serpente ha incontrato un blocco in quel caso finire il gioco
             restituendo il valore booleano False"""
             
-            if self.field.block_in(nuovaTesta):
+            if self.field.blocks(nuovaTesta):
                 return False
             
             #altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se si aggiornare testa, coda e scia del serpente
 
-            elif self.field.food_in(nuovaTesta): 
+            if self.field.food(nuovaTesta): 
                             
                 self.coda.append(self.testa)
 
@@ -380,7 +381,7 @@ class snake:
             
             if nuovaTesta[0] not in self.field:
                 
-                nuovaTesta[0]=(self.testa[0]%(len(row(self.field))))
+                nuovaTesta[0]=(self.testa[0]%(((self.field).ndim)))
                 
                 self.coda.append(self.testa)
                 
@@ -392,7 +393,7 @@ class snake:
                 
             if nuovaTesta[1] not in self.field:
                 
-                nuovaTesta[1]=(self.testa[1]%(len(col(self.field))))
+                nuovaTesta[1]=(self.testa[1]%(((self.field).ndim)))
                 
                 self.coda.append(self.testa)
                 
@@ -406,12 +407,12 @@ class snake:
             """controllo se la nuova Testa del serpente ha incontrato un blocco in quel caso finire il gioco
             restituendo il valore booleano False"""
             
-            if self.field.block_in(nuovaTesta):
+            if self.field.blocks(nuovaTesta):
                 return False
             
             #altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se si aggiornare testa, coda e scia del serpente
 
-            elif self.field.food_in(nuovaTesta): 
+            if self.field.food(nuovaTesta): 
                             
                 self.coda.append(self.testa)
 
@@ -423,7 +424,7 @@ class snake:
                """se il serpente ha solo la testa aggiorno la scia e la testa del serpente""" 
                
                if self.coda==[]:
-                
+                   
                    self.scia.append(self.testa)
                 
                    self.testa=nuovaTesta
@@ -450,7 +451,7 @@ class snake:
             
             if nuovaTesta[0] not in self.field:
                 
-                nuovaTesta[0]=(self.testa[0]%(len(row(self.field))))
+                nuovaTesta[0]=(self.testa[0]%(((self.field).ndim)))
                 
                 self.coda.append(self.testa)
                 
@@ -462,7 +463,7 @@ class snake:
                 
             if nuovaTesta[1] not in self.field:
                 
-                nuovaTesta[1]=(self.testa[1]%(len(col(self.field))))
+                nuovaTesta[1]=(self.testa[1]%(((self.field).ndim)))
                 
                 self.coda.append(self.testa)
                 
@@ -476,12 +477,12 @@ class snake:
             """controllo se la nuova Testa del serpente ha incontrato un blocco in quel caso finire il gioco
             restituendo il valore booleano False"""
             
-            if self.field.block_in(nuovaTesta):
+            if self.field.blocks(nuovaTesta):
                 return False
             
             #altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se si aggiornare testa, coda e scia del serpente
 
-            elif self.field.food_in(nuovaTesta): 
+            if self.field.food(nuovaTesta): 
                             
                 self.coda.append(self.testa)
 
@@ -520,7 +521,7 @@ class snake:
             
             if nuovaTesta[0] not in self.field:
                 
-                nuovaTesta[0]=(self.testa[0]%(len(row(self.field))))
+                nuovaTesta[0]=(self.testa[0]%(((self.field).ndim)))
                 
                 self.coda.append(self.testa)
                 
@@ -532,7 +533,7 @@ class snake:
                 
             if nuovaTesta[1] not in self.field:
                 
-                nuovaTesta[1]=(self.testa[1]%(len(col(self.field))))
+                nuovaTesta[1]=(self.testa[1]%(((self.field).ndim)))
                 
                 self.coda.append(self.testa)
                 
@@ -546,12 +547,12 @@ class snake:
             """controllo se la nuova Testa del serpente ha incontrato un blocco in quel caso finire il gioco
             restituendo il valore booleano False"""
             
-            if self.field.block_in(nuovaTesta):
+            if self.field.blocks(nuovaTesta):
                 return False
             
             #altrimenti vedo se il serpente ha incontrato del cibo lungo il percorso, se si aggiornare testa, coda e scia del serpente
 
-            elif self.field.food_in(nuovaTesta): 
+            if self.field.food(nuovaTesta): 
                             
                 self.coda.append(self.testa)
 
@@ -589,7 +590,7 @@ class snake:
         
         
             
-            
+          #try  
            
 
               
@@ -618,13 +619,14 @@ def play(game_file: str) -> int:
             for move in moves:
                 
                 serpente.go(move)  #da rivedere (passo le mosse al metodo go della classe snake)
-            
+                
+            return field   
             
             
             
         elif field_in.endswith('.json'):
             
-            field=my_load_json("data/field_01.json") #richiamo la funzione my_load_json
+            field=my_load_json("data/field_02.json") #richiamo la funzione my_load_json
             
             serpente= snake(start,field)
             
@@ -632,12 +634,11 @@ def play(game_file: str) -> int:
                 
                 serpente.go(move)  #da rivedere (passo le mosse al metodo go della classe snake)
             
+            return field
 
 
-
-
-
-
+gioco2=play("data/gamefile_02.json")
+print(gioco2)
 
 
 
