@@ -20,9 +20,9 @@ def my_load_image(filename: str) -> (np.ndarray,dict):
     ret["cols"]=arr.shape[1]
     for x in range(ret["rows"]):
         for y in range(ret["cols"]):         
-            if arr[x,y]==(255,128,0):           #chiedere se arr è una matrice con già tutto impostato con colori dei rispettivi
-                ret["food"].append([x,y])       #elementi necessari
-            elif arr[x,y]==(255,0,0):
+            if tuple(arr[x][y])==(255,128,0):           
+                ret["food"].append([x,y])       
+            elif tuple(arr[x][y])==(255,0,0):
                 ret["blocks"].append([x,y])
     return arr, ret
 
@@ -48,10 +48,10 @@ def my_load_json(filename: str) -> (np.ndarray,dict):
       field = np.zeros((rows, cols, 3), dtype=np.uint8)
       
       for [x,y] in food:
-          field[x][y]=(255,128,0)
+          field[x][y]=[255,128,0]
               
       for [x,y] in blocks:
-          field[x][y]=(255,0,0)
+          field[x][y]=[255,0,0]
           
   return field, json_data
 
@@ -95,13 +95,13 @@ class snake:
         #se la y della nuovaTesta è minore di zero la riporto a cols -1
         
         
-        if nuovaTesta[0]> (self.json_data["rows"]): #si può effettuare questo passaggio se la variabile field è contenuta nel costruttore?
+        if nuovaTesta[0]>= (self.json_data["rows"]): #si può effettuare questo passaggio se la variabile field è contenuta nel costruttore?
                 nuovaTesta[0]=0
                 
         elif nuovaTesta[0]< 0:
             nuovaTesta[0]= (self.json_data["rows"]) -1
             
-        if nuovaTesta[1]> (self.json_data["cols"]):
+        if nuovaTesta[1]>= (self.json_data["cols"]):
             nuovaTesta[1]=0
             
         elif nuovaTesta[1]< 0:
@@ -170,49 +170,49 @@ class snake:
             
             """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
             
-            nuovaTesta=(self.testa[0]+1, self.testa[1])
+            nuovaTesta=[self.testa[0]+1, self.testa[1]]
             
            
         elif move == "E":
             
             """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
             
-            nuovaTesta=(self.testa[0], self.testa[1]+1)
+            nuovaTesta=[self.testa[0], self.testa[1]+1]
             
                    
         elif move == "W":
             
             """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
             
-            nuovaTesta=(self.testa[0], self.testa[1]-1)
+            nuovaTesta=[self.testa[0], self.testa[1]-1]
            
             
         elif move == "NW":
             
             """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
             
-            nuovaTesta=(self.testa[0]-1,self.testa[1]-1)
+            nuovaTesta=[self.testa[0]-1,self.testa[1]-1]
             
            
         elif move == "NE":
             
             """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
             
-            nuovaTesta=(self.testa[0]-1,self.testa[1]+1) 
+            nuovaTesta=[self.testa[0]-1,self.testa[1]+1] 
             
            
         elif move == "SW":
             
             """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
             
-            nuovaTesta=(self.testa[0]+1,self.testa[1]-1)
+            nuovaTesta=[self.testa[0]+1,self.testa[1]-1]
             
            
         elif move == "SE":
             
             """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
             
-            nuovaTesta=(self.testa[0]+1, self.testa[1]+1)
+            nuovaTesta=[self.testa[0]+1, self.testa[1]+1]
             
            
         else:
@@ -228,13 +228,13 @@ class snake:
         
         for [x,y] in self.scia:
             
-            self.field[x][y]=(128,128,128)
+            self.field[x][y]=[128,128,128]
             
         for [x,y] in self.coda:
             
-            self.field[x][y]=(0,255,0)
+            self.field[x][y]=[0,255,0]
         
-        self.field[self.testa[0]][self.testa[1]]=(0,255,0)
+        self.field[self.testa[0]][self.testa[1]]=[0,255,0]
         
         
         return self.field
@@ -271,9 +271,9 @@ def play(game_file: str) -> int:
        
         serpente= snake(start,field,json_data)
         
-        for move in moves:
+        for move in moves.split(" "):
             
-            stato=serpente.go(move)    #da rivedere (passo le mosse al metodo go della classe snake)
+            stato=serpente.go(move)    
         
             if not stato:
                 
@@ -282,23 +282,18 @@ def play(game_file: str) -> int:
         nuovo_field=serpente.disegna_field()
         
         
+        img = Image.fromarray(nuovo_field)
+        
+        img.save(field_out)
+        
         return field
 
 
 
         
 
+gioco2=play("data/gamefile_08.json")
 
-
-
-
-
-
-
-
-
-gioco2=play("data/gamefile_02.json")
-print(gioco2)
 
 
 
