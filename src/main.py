@@ -1,32 +1,44 @@
-#importo numpy pandas e matplotlib
-import numpy as np
-import pandas as pd
-from matplotlib import pyplot as plt
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Oct 14 09:27:36 2024
 
-#converto un file PNG in un matrice di tuple RGB
+@author: alber
+"""
+
+import numpy as np
+
+"""converto un file PNG in una matrice"""
+
 from PIL import Image
 
-def my_load_image(filename: str) -> np.ndarray:
+def my_load_image(filename: str) -> (np.ndarray,dict):
     img = Image.open(filename)
-    return np.array(img)
+    arr=np.array(img)
+    #print(arr)
+    ret={"rows": 0, "cols": 0,"food":[],"blocks":[]}
+    ret["rows"]=arr.shape[0]
+    ret["cols"]=arr.shape[1]
+    for x in range(ret["rows"]):
+        for y in range(ret["cols"]):         
+            if tuple(arr[x][y])==(255,128,0):           
+                ret["food"].append([x,y])       
+            elif tuple(arr[x][y])==(255,0,0):
+                ret["blocks"].append([x,y])
+    return arr, ret
 
-img=Image.open("data/field_01.png")
-print(np.array(img))
 
-#fine conversione file PNG in una matrice PNG
+""" fine conversione file PNG in una matrice """
 
 
-
-
-#converto un file JSON in una lista di liste
+""" converto un file JSON in una matrice """
 
 import json
 
-def my_load_json(filename: str) -> np.ndarray:
+def my_load_json(filename: str) -> (np.ndarray,dict):
   
   with open(filename) as initial_field:
       json_data = json.load(initial_field)
-      print(json_data)
+      #print(json_data)
       
       rows = json_data['rows']
       cols = json_data['cols']
@@ -35,278 +47,263 @@ def my_load_json(filename: str) -> np.ndarray:
       
       field = np.zeros((rows, cols, 3), dtype=np.uint8)
       
-      
       for [x,y] in food:
-          field[x][y]=(255,128,0)
-          
+          field[x][y]=[255,128,0]
+              
       for [x,y] in blocks:
-          field[x][y]=(255,0,0)
+          field[x][y]=[255,0,0]
           
-  return field
-         
-#fine conversione di un file JSON in una lista di liste
+  return field, json_data
 
-#creo la classe snake
+""" fine conversione file JSON in una matrice """
+
+
+
+
+"""creo la classe snake"""
 
 class snake:
-    def __init__(self,start,field):
+    def __init__(self,start,field,json_data):
         
         self.testa=start
         
         self.field=field
         
+        self.json_data=json_data
+        
         self.coda=[]
         
         self.scia=[]
+    
+        self.len_serpente=0
+    
+    def spostamento(self, nuovaTesta):
+        #contrallare che la testa sia uscita dal campo di gioco
         
-       
-      #il metodo go restituisce un metodo booleano che indica se il serpente è an
-    def go(self, move):
-        if move is "N" :
+        #la x della nuovaTesta deve essere maggiore di 0 e minore di row
+        
+        #se la x della nuovaTesta se è maggiore di rows la riporto a zero
+        
+        #se la x della nuovaTesta è minore di zero la riporto a rows -1
+        
+        #la y della nuovaTesta deve essere maggiore di 0 e minore di cols
+        
+        #se la y della nuovaTesta se è maggiore di cols la riporto a zero
+        
+        #se la y della nuovaTesta è minore di zero la riporto a cols -1
+        
+        
+        if nuovaTesta[0]>= (self.json_data["rows"]): #si può effettuare questo passaggio se la variabile field è contenuta nel costruttore?
+                nuovaTesta[0]=0
                 
-            nuovaTesta=(self.testa[0]-1, self.testa[1])
+        elif nuovaTesta[0]< 0:
+            nuovaTesta[0]= (self.json_data["rows"]) -1
             
-                
-            if self.field.block_in(nuovaTesta):
-                return False
+        if nuovaTesta[1]>= (self.json_data["cols"]):
+            nuovaTesta[1]=0
             
+        elif nuovaTesta[1]< 0:
+            nuovaTesta[1]= (self.json_data["cols"]) -1
             
-            self.coda.append(self.testa)
-            
-            self.testa=nuovaTesta
-            
-            
-            
-            if self.field.food_in(self.testa):
-                
-                self.scia.append(self.coda[0])
-                
-                self.coda=self.coda[1:]
-                
-            
-            elif move is "S" : 
-                
-                nuovaTesta=(self.testa[0]+1, self.testa[1])
-                
-                if self.field.block_in(nuovaTesta):
-                    return False
-                
-                self.coda.append(self.testa)
-                
-                self.testa=nuovaTesta
-                
-                
-                if self.field.food_in(self.testa):
-                    
-                    self.scia.append(self.coda[0])
-                    
-                    self.coda=self.coda[1:]
-                    
-                    
-            elif move is "E" :
-                
-                nuovaTesta=(self.testa[0], self.testa[1]+1)
-                
-                if self.field.block_in(nuovaTesta):
-                    return False
-                
-                self.coda.append(self.testa)
-                
-                self.testa=nuovaTesta
-                
-                
-                if self.field.food_in(testa):
-                    
-                    self.scia.append(self.coda[0])
-                    
-                    self.coda=self.coda[1:]
-                    
-                    
-            elif move is "W" :
-                
-                nuovaTesta=(self.testa[0], self.testa[1]-1)
-                
-                if self.field.block_in(nuovaTesta):
-                    return False
-                
-                self.coda.append(self.testa)
-                
-                self.testa=nuovaTesta
-                
-                
-                if self.field.food_in(testa):
-                    
-                    self.scia.append(self.coda[0])
-                    
-                    self.coda=self.coda[1:]
-                    
-                    
-            elif move is "NW" :
-                
-                nuovaTesta=(self.testa[0]-1,self.testa[1]-1)
-                
-                if self.field.block_in(nuovaTesta):
-                    return False
-                
-                self.coda.append(self.testa)
-                
-                self.testa=nuovaTesta
-                
-                
-                if self.field.food_in(testa):
-                    
-                    self.scia.append(self.coda[0])
+        
+        
+        
 
-                    self.coda=self.coda[1:]
-                    
+    
+        #controllare se la testa ha incontrato un blocco if [x,y] in json_data["blocks"]
+        
+        if nuovaTesta in self.json_data["blocks"]:
+            return False
 
-            elif move is "NE" :
+
+        
+        #controllare se la testa ha incontrato del cibo if [x,y] in json_data["food"]
+        
+        if nuovaTesta in self.json_data["food"]:
+            self.len_serpente+=1
+            
+            self.json_data["food"].remove(nuovaTesta)
                 
-                nuovaTesta=(self.testa[0]-1,self.testa[1]+1)
-                
-                if self.field.block_in(nuovaTesta):
-                    return False
-                
-                self.coda.append(self.testa)
-                
-                self.testa=nuovaTesta
-                
-                
-                if self.field.food_in(testa):
-                    
-                    self.scia.append(self.coda[0])
-                    
-                    self.coda=self.coda[1:]
-                    
-                    
-            elif move is "SW" :
-                
-                nuovaTesta=(self.testa[0]+1,self.testa[1]-1)
-                
-                if self.field.block_in(nuovaTesta):
-                    return False
-                
-                self.coda.append(self.testa)
-                
-                self.testa=nuovaTesta
-                
-                
-                if self.field.food_in(testa):
-                    
-                    self.scia.append(self.coda[0])
-                    
-                    self.coda=self.coda[1:]
-                    
-                    
-            elif move is "SE" :
-                
-                nuovaTesta=(self.testa[0]+1, self.testa[1]+1)
-                
-                if self.field.block_in(nuovatTesta):
-                    return False
-                
-                self.coda.append(self.testa)
-                
-                self.testa=nuovaTesta
-                
-                
-                if self.field.food_in(testa):
-                    
-                    self.scia.append(self.coda[0])
-                    
-                    self.coda=self.coda[1:]
-                    
-                
-            else:
+        #controllare se la testa ha incontrato il corpo del serpente primo controllo, [x,y] sono dentro la coda  
+        
+        if nuovaTesta in self.coda:
+            return False
+            
+        #secondo controllo, [x,y] hanno attraversato la coda del serpente  
+        
+        collo= self.testa
+        
+        controllo1= [nuovaTesta[0], collo[1]]
+        controllo2= [collo[0],nuovaTesta[1]]
+        
+        if controllo1 in self.coda and controllo2 in self.coda:
+            return False
+        
+        self.coda.append(self.testa)
                  
-                 return False
-             
-                    
-             
+        
+        if len(self.coda)> self.len_serpente:
             
+            self.scia.append(self.coda[0])
+            
+            self.coda.pop(0)    #chiedere a che serve questa condizione
+        
+        self.testa=nuovaTesta
+        
+        return True
         
     
+    """"il metodo go restituisce un metodo booleano che indica se il serpente è ancora in gioco"""
+      
+    
+    
+    def go(self, move):
+        
+        if move == "N" :
+               
+            """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
+            
+            nuovaTesta=[self.testa[0]-1, self.testa[1]]
+                   
+           
+        elif move == "S":
+            
+            """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
+            
+            nuovaTesta=[self.testa[0]+1, self.testa[1]]
+            
+           
+        elif move == "E":
+            
+            """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
+            
+            nuovaTesta=[self.testa[0], self.testa[1]+1]
+            
+                   
+        elif move == "W":
+            
+            """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
+            
+            nuovaTesta=[self.testa[0], self.testa[1]-1]
+           
+            
+        elif move == "NW":
+            
+            """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
+            
+            nuovaTesta=[self.testa[0]-1,self.testa[1]-1]
+            
+           
+        elif move == "NE":
+            
+            """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
+            
+            nuovaTesta=[self.testa[0]-1,self.testa[1]+1] 
+            
+           
+        elif move == "SW":
+            
+            """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
+            
+            nuovaTesta=[self.testa[0]+1,self.testa[1]-1]
+            
+           
+        elif move == "SE":
+            
+            """aggiorno nuovaTesta del serpente (ovvero la nuova "casella" dove si è spostato il serpente)"""
+            
+            nuovaTesta=[self.testa[0]+1, self.testa[1]+1]
+            
+           
+        else:
+            
+            return False
+        
+        codice_uscita=self.spostamento(nuovaTesta)
+        
+        
+        return codice_uscita
+            
+    def disegna_field(self):
+        
+        for [x,y] in self.scia:
+            
+            self.field[x][y]=[128,128,128]
+            
+        for [x,y] in self.coda:
+            
+            self.field[x][y]=[0,255,0]
+        
+        self.field[self.testa[0]][self.testa[1]]=[0,255,0]
+        
+        
+        return self.field
+           
 
+              
 
-#inizio a scrivere la funzione play
-
+             
 
 def play(game_file: str) -> int:
-    
     with open(game_file) as gamefile:
-        jsondata = json.load(gamefile)
-        print(jsondata)
+        game_data = json.load(gamefile)
+        #print(game_data)
         
-        field_in = jsondata["field_in"]
-        start = jsondata["start"]
-        moves = jsondata["moves"]
-        field_out = jsondata["field_out"]
-        
+        field_in = game_data["field_in"]
+        start = game_data["start"]
+        moves = game_data["moves"]
+        field_out = game_data["field_out"]
+
+
         #vedo l'estensione del file field_in se PNG o JSON
     
         if field_in.endswith('.png'):
-            my_load_image(field_in)
             
-            #chiamo la classe snake
+            field, json_data=my_load_image(field_in) #richiamo la funzione my_load_image
             
-            gioco_snake= snake(start,field_in)
             
-            gioco_snake.go(moves)
-            
-            gioco_snake(field)=field_out
             
         elif field_in.endswith('.json'):
-            my_load_json(field_in)
             
-            #chiamo la classe snake
+            field, json_data=my_load_json(field_in) #richiamo la funzione my_load_json
             
-            gioco_snake= snake(start,field_in)
+        
+       
+        serpente= snake(start,field,json_data)
+        
+        for move in moves.split(" "):
             
-            gioco_snake.go(move)
+            stato=serpente.go(move)    
+        
+            if not stato:
+                
+                break
             
-            gioco_snake(field)=field_out
+        nuovo_field=serpente.disegna_field()
+        
+        
+        img = Image.fromarray(nuovo_field)
+        
+        img.save(field_out)
+        
+        return serpente.len_serpente + 1
 
 
-        
-        
-  
- 
-    
- 
-    
- 
-    
- 
-    
- 
-    
- 
-    
- 
-    
- 
-    
- 
-    
+
         
 
-    
-    
-        
-#
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
